@@ -1,0 +1,48 @@
+####################################
+# Gerar Código a partir do Diagrama           #
+####################################
+
+#Persistência
+gerarDiagramaByCodigo codigo=”int main() {int a = 1; while(a<5) {printf(“%d”, a); a = a + 1;} return 0;}” tipo=”c”
+
+#Persistência
+novoDiagrama nome=”Novo Diagrama”
+inserirBlocoTexto blocos = {TerminalInicio} texto = {“Inicio”} indice = {1}
+inserirBlocoTexto blocos = {TerminalFim} texto = {“Fim”} indice = {2}
+inserirBlocoTexto blocos = {Processamento, SaidaDeDados} texto = {a = 2, printf(“%d”, a)} indice = {3,4} 
+inserirConexao indiceDe = 1 indicePara = 3
+inserirConexao indiceDe = 3 indicePara = 4
+inserirConexao indiceDe = 4 indicePara = 2
+
+#104
+expect “a = 2\nprint a” gerarCodigoDeDiagrama tipo=”python”
+#105
+expect “int main() {int a = 2; printf(“%d”, a);return 0;}” gerarCodigoDeDiagrama tipo=”c”
+
+removerBloco indice = 3
+
+#106
+expecterror “Nao pode existir ligacoes Nulas” gerarCodigoDeDiagrama tipo=”python”
+
+removerConexao indiceDe = -1 indicePara 4
+removerConexao indiceDe = 1 indicePara -1
+
+#107
+expecterror “Os blocos nao estao interligados” gerarCodigoDeDiagrama tipo=”python”
+
+fecharDiagrama
+
+#Persistência
+novoDiagrama nome=”Novo Diagrama”
+inserirBlocoTexto blocos = {TerminalInicio} texto = {“Inicio”} indice = {1}
+inserirBlocoTexto blocos = {TerminalFim} texto = {“Fim”} indice = {2}
+inserirBlocoTexto blocos = {Processamento, SaidaDeDados} texto = {alo, printf(“%d”, a)} indice = {3,4} 
+inserirConexao indiceDe = 1 indicePara = 3
+inserirConexao indiceDe = 3 indicePara = 4
+inserirConexao indiceDe = 4 indicePara = 2
+
+#Processamento nao pode receber um texto alo
+#107
+expecterror “erro de sintaxe no codigo” gerarCodigoDeDiagrama tipo=”python”
+
+fecharDiagrama

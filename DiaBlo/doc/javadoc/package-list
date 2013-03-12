@@ -1,0 +1,9 @@
+br.ufal.lamp.diablo.core
+br.ufal.lamp.diablo.core.block
+br.ufal.lamp.diablo.core.gerador
+br.ufal.lamp.diablo.exception
+br.ufal.lamp.diablo.exception.facade
+br.ufal.lamp.diablo.figures
+br.ufal.lamp.diablo.tests.unit
+br.ufal.lamp.diablo.ui.gui
+br.ufal.lamp.diablo.utils

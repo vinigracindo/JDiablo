@@ -1,0 +1,129 @@
+#Persistência
+novoDiagramaPersistencia
+
+#21
+expect "bloco BeginTerminal inserido com sucesso" inserirBlocoTexto blocos={BeginTerminal} texto={Inicio} indice={1}
+
+#22
+expect "bloco EndTerminal inserido com sucesso" inserirBlocoTexto blocos={EndTerminal} texto={"Fim"} indice={2}
+
+#23
+expect "bloco OutputData inserido com sucesso" inserirBlocoTexto blocos={OutputData} texto={"Hello"} indice={3}
+
+#24
+# ERROR. Pode sim existir mais de um bloco fim.
+#expecterror "bloco EndTerminal ja existe" inserirBlocoTexto blocos={EndTerminal} texto={"Fim"} indice={4}
+
+#25
+expecterror "O Diagrama não pode ter mais de um Terminal Início." inserirBlocoTexto blocos={BeginTerminal} texto={"Inicio"} indice={4}
+
+fecharDiagrama
+novoDiagramaPersistencia
+
+#26
+expect "bloco BeginTerminal Processing Decisao inserido com sucesso" inserirBlocoTexto blocos={BeginTerminal,Processing,Decisao} texto={Inicio,a<2,a>2} indice={3,4,5} 
+
+#27
+#expect "conectado com sucesso" inserirConexao indiceDe = {1} indicePara = {4}
+
+#28
+#expecterror "Quantidade indices invalido" inserirBlocoTexto blocos={Processing, Decisao} texto={a < 2, a>2} indice={4,5,6} 
+
+#29
+expecterror "Parametro invalido" inserirBlocoTexto blocos={Processing,Decisao} texto={a<2,a>2} indice={4} 
+
+#30
+expecterror "Parametro invalido" inserirBlocoTexto blocos={Processing,Decisao} texto={a>2} indice={4,5} 
+
+#31
+expecterror "Parametro invalido" inserirBlocoTexto blocos={Processing,Decisao} texto={a>2,a>2} indice={4,5,6}
+
+#32
+expecterror "Parametro invalido" inserirBlocoTexto blocos={Processing,Decisao} texto={a>2,a>2,a>2} indice={4,5} 
+
+#33
+expecterror "Parametro invalido" inserirBlocoTexto blocos={Processing,Decisao,Decisao} texto={a<2,a>2} indice={4,5,6}  
+
+#34
+#expecterror "conexao invalida" inserirConexao indiceDe = {1} indicePara = {4}
+
+
+#35
+#expect "conectado com sucesso" inserirConexao indiceDe = {4} indicePara = {2}
+
+#36
+#expecterror "conexao invalida. Processing ja possui conexao" inserirConexao indiceDe = {5} indicePara = {4}
+
+#37
+#expecterrror "Fim não pode conectar um bloco" inserirConexao indiceDe = {5} indicePara = {4}
+
+#38 
+#expecterror "Inicio ja esta conectado com outro bloco" inserirConexao indiceDe = {1} indicePara = {5}
+
+fecharDiagrama
+
+#Persistência
+novoDiagramaPersistencia
+
+#39 
+#expect "bloco Inicio Fim inserido com sucesso" inserirBlocoTexto blocos = {BeginTerminal, EndTerminal} textos = {"Inicio", "Fim"} indices = {1,2}
+
+#40 
+#expecterror "conexao invalida." inserirConexao indiceDe = {2} indicePara = {1}
+
+#41 
+#expect "conectado com sucesso" inserirConexao indiceDe = {1} indicePara = {2}
+
+#42
+#expect "bloco Processing  Decisaoinserido com sucesso" inserirBlocoTexto blocos = {Processing, Decisao} textos = {"int a = 10", "a > 5"} indices = {3, 4}
+
+#43
+#expecterror "O indice 2 nao corresponde ao BeginTerminal" removerConexao indiceDe = {2} indicePara = {2}
+
+
+#44
+#expect "conexao removida com sucesso" removerConexao indiceDe = {1} indicePara = {3}
+
+#45
+#expect "conectado com sucesso" inserirConexao indiceDe = {1} indicePara = {4}
+
+#46
+#expect "Decisao nao possui conexao com indice 1" removerConexao indiceDe = {4} indicePara = {1}
+
+fecharDiagrama
+
+#Persistência
+novoDiagramaPersistencia
+
+#47
+#expect "bloco inicio Processing decisao fim inserido com sucesso" inserirBlocoTexto blocos = {BeginTerminal, Processing, Decisao, EndTerminal} texto = {inicio, int a = 5, a>5, fim} indice = {1,2,3,4}
+
+#48
+#expect "BeginTerminal" getBlocoDeIndice indices = {1}
+
+#49
+#expect "EndTerminal" getBlocosDeIndices indices = {4}
+
+#50
+#expecterror "indice nao existe" getBlocosDeIndices indices = {5}
+
+#51
+#expecterror "indice invalido" getBlocosDeIndice indices = {alo, 1}
+
+#52
+#expecterror "indice invalido" getBlocosDeIndices indices = {1, 1.0}
+
+#53
+#expecterror "texto decisao invalido" inserirBlocoTexto blocos = {Decisao} texto = {a} indice = {5}
+
+
+#54
+#expecterror "Nao pode conectar um bloco com ele mesmo" inserirConexao indiceDe = {2} indicePara = {2}
+
+#55
+#expecterror "Numero de indices desiguais" inserirConexao indiceDe = {2} indicePara = {3,2}
+
+#56
+#expect "Conectado com sucesso" inserirConexao indiceDe = {1,2,3} indicePara = {2,3,4}
+
+fecharDiagrama

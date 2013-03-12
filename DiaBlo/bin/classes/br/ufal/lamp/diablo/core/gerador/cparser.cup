@@ -1,0 +1,49 @@
+package calculadora;
+
+import java_cup.runtime.*;
+import java.util.*;
+
+parser code {:
+
+    private Calculadora c;
+
+	public Calculadora getCalculadora() {
+		return c;
+	}
+
+	public void setCalculadora(Calculadora _c) {
+		c = _c;
+	}
+
+:}
+
+action code {:
+
+    private Calculadora c = new Calculadora();
+
+	public Calculadora getCalculadora() {
+		return c;
+	}
+
+	public void setCalculadora(Calculadora _c) {
+		c = _c;
+	}
+
+:}
+
+terminal PLUS;
+terminal Integer INT;
+
+non terminal expr, term;
+
+expr ::= term
+       | PLUS term
+       | term PLUS term
+       ;
+
+term  ::= INT:i
+       {: 
+          getCalculadora().setValor(i);
+          parser.setCalculadora(getCalculadora());
+       :}
+       ;

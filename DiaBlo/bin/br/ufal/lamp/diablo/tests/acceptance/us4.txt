@@ -1,0 +1,85 @@
+####################################
+# Gerar Diagrama a partir do Código           #
+####################################
+
+#gerarDiagramaDeCodigo(String codigo, String tipo)
+
+#74
+expect “Diagrama gerado com sucesso” gerarDiagramaDeCodigo codigo=”a = raw_input()\n” tipo=”python”
+
+#75
+expect “Diagrama gerado com sucesso” gerarDiagramaDeCodigo codigo=”for i in range(0,10):\n\tprint i” tipo=”python”
+
+#76
+expecterror “Sintaxe nao pertece ao tipo” gerarDiagramaDeCodigo codigo=”for i in range(0,10):\n\tprint i” tipo=”c”
+
+#77
+expecterror “Sintaxe nao pertece ao tipo” gerarDiagramaDeCodigo codigo=”for i in range(0,10):\n\tprint i” tipo=”pascal”
+
+#78
+expect “Tipo invalido” gerarDiagramaDeCodigo codigo=”for i in range(0,10):\n\tprint i” tipo=”qualquer”
+
+#79
+expect “Diagrama gerado com sucesso” gerarDiagramaDeCodigo codigo=”program OlaMundo\nbegin\n\tWriteLn(‘Olá mundo’);\nend.” tipo=”pascal”
+
+#80
+expect “Diagrama gerado com sucesso” gerarDiagramaDeCodigo codigo=”int main() {int a; scanf(“%d”, &a);return 0;}” tipo=”c”
+
+#81
+expecterror “Erro de sintaxe no arquivo” gerarDiagramaDeCodigo codigo=”int nanon() {int a; scanf(‘%d’, &a);return 0;}” tipo=”c”
+
+#82
+expecterror “Erro de sintaxe no arquivo” gerarDiagramaDeCodigo codigo=”for i in range(0,10):\nprint i” tipo=”python”
+
+#83
+expect “Diagrama gerado com sucesso” gerarDiagramaDeCodigo codigo=”for i in range(0,10):\n\tprint i” tipo=”python”
+
+#84
+expecterror “Tipo invalido” gerarDiagramaDeCodigo codigo=”for i in range(0,10):\nprint i” tipo=”agora”
+
+#85
+expecterror “Tipo invalido” gerarDiagramaDeCodigo codigo=”for i in range(0,10):\nprint i” tipo=”amanha”
+
+#86
+expecterror “Tipo invalido” gerarDiagramaDeCodigo codigo=”for i in range(0,10):\nprint i” tipo=”hoje”
+
+#Persistência
+gerarDiagramaByCodigo codigo=”int main() {char opc; scanf(“%c”, &opc); if(opc==’s’) printf(“A opção foi Sim”); else printf(“A opção foi Não”); return 0;}” tipo=”c”
+
+#String novoDiagrama(String path, String nomeArquivo)
+#String getBlocosEmDiagrama()
+
+#87
+#ordem alfabetica
+expect {Conector, Decisao, EntradaDados, SaidaDeDados, SaidaDeDados, TerminalFim, TerminalInicio} getBlocosEmDiagrama
+
+#String getConexoesBlocosEmDiagrama()
+
+#88
+#ordem alfabetica
+expect {Conector ->TerminalFim, Decisao -> SaidaDeDados SaidaDeDados, EntradasDados -> Decisao, SaidaDeDados -> Conector, SaidaDeDados -> Conector, TerminalFim -> NULL, TerminalInicio -> EntradaDados} getConexoesBlocosEmDiagrama
+
+fecharDiagrama
+
+
+#Persistência
+gerarDiagramaDeCodigo codigo=”int main() {int a = 1; while(a<5) {printf(“%d”, a); a = a + 1;} return 0;}” tipo=”c”
+
+#89
+expect {Decisao, Processamento, Processamento, SaidaDeDados,  TerminalFim, TerminalInicio} getBlocosEmDiagrama
+
+#90
+expect {Decisao -> SaidaDeDados TerminalFim, Processamento -> Decisao, Processamento -> Decisao, SaidaDeDados -> Processamento, TerminalInicio -> Processamento} getConexoesBlocosEmDiagrama
+
+fecharDiagrama
+
+#Persistência
+gerarDiagramaDeCodigo codigo=”ate = raw_input()\nwhile(ate<100)\n\tprint ate\n\tate = ate + 1” tipo=”python”
+
+#91
+expect {Decisao, Processamento, Processamento, SaidaDeDados,  TerminalFim, TerminalInicio} getBlocosEmDiagrama
+
+#92
+expect {Decisao -> SaidaDeDados TerminalFim, Processamento -> Decisao, Processamento -> Decisao, SaidaDeDados -> Processamento, TerminalInicio -> Processamento} getConexoesBlocosEmDiagrama
+
+fecharDiagrama

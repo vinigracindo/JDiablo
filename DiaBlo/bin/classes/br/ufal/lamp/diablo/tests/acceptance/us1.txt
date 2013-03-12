@@ -1,0 +1,80 @@
+####################################
+# Criando Novo Diagrama            #
+####################################
+
+#1
+expect "Novo diagrama criado com sucesso" novoDiagrama nomeDiagrama="Novo Diagrama"
+
+#2
+# Não foi implementado o gerar diagrama a parti do codigo
+#expect "Extensão de arquivo aceito" novoDiagrama path="." nomeArquivo = "*.py"
+
+#3
+# Não foi implementado o gerar diagrama a parti do codigo
+#expect "Extensão de arquivo aceito" novoDiagrama path="." nomeArquivo = "*.pas"
+
+#4
+# Não foi implementado o gerar diagrama a parti do codigo
+#expect "Extensão de arquivo aceito" novoDiagrama path="." nomeArquivo = "*.c"
+
+#5
+# Parâmetro com ou sem Aspa é considerado String pelo easy. Então esse teste foi modificado para expect
+expect "Novo diagrama criado com sucesso" novoDiagrama nomeDiagrama=1
+
+#6
+# Não foi implementado o gerar diagrama a parti do codigo
+#expecterror "Parametro invalido" novoDiagrama path={".","."} nomeArquivo="*.py"
+
+#7
+# Não foi implementado o gerar diagrama a parti do codigo
+#expecterror "Parametro invalido" novoDiagrama path="." nomeArquivo=""
+
+#8
+# Não foi implementado o gerar diagrama a parti do codigo
+#expecterror "Parametro invalido" novoDiagrama path="local" nomeArquivo = "*.py"
+
+#9
+expecterror "Parametro invalido" novoDiagrama nomeDiagrama={Diagrama,Diagrama2}
+
+#10
+expecterror "Parametro invalido" novoDiagrama nomeDiagrama=""
+
+#11
+# Não foi implementado o gerar diagrama a parti do codigo
+#expecterror "Arquivo não pode ser lido" novoDiagrama path="." nomeArquivo="*.txt"
+
+#12
+# Não foi implementado o gerar diagrama a parti do codigo
+#expecterror "Arquivo não pode ser lido" novoDiagrama path="." nomeArquivo="*.jpg"
+
+#13
+# Não foi implementado o gerar diagrama a parti do codigo
+#expecterror "Arquivo não pode ser lido" novoDiagrama path="." nomeArquivo="*.png"
+
+#14
+# Não foi implementado o gerar diagrama a parti do codigo
+#expecterror "Arquivo não pode ser lido" novoDiagrama path="." nomeArquivo="*.bmp"
+
+#15
+# Não foi implementado o gerar diagrama a parti do codigo
+#expecterror "Arquivo não pode ser lido" novoDiagrama path="." nomeArquivo="py."
+
+#16
+# Não foi implementado o gerar diagrama a parti do codigo
+#expecterror "Arquivo não pode ser lido" novoDiagrama path="." nomeArquivo={*.py, *.pas}
+
+#17
+# Não foi implementado o gerar diagrama a parti do codigo
+#expecterror "Arquivo n�o pode ser lido" novoDiagrama path={".", "/"} nomeArquivo="*.py"
+
+#18
+# Não foi implementado o gerar diagrama a parti do codigo
+#expecterror "Arquivo n�o pode ser lido" novoDiagrama path={".", "/"} nomeArquivo={*.py, *.c}
+
+#19
+# Não foi implementado o gerar diagrama a parti do codigo
+#expecterror "Arquivo n�o pode ser lido" novoDiagrama path={".", "/"} nomeArquivo="*.c"
+
+#20
+# Não foi implementado o gerar diagrama a parti do codigo
+#expecterror "Arquivo n�o pode ser lido" novoDiagrama path={".", "/"} nomeArquivo="*.pas"
