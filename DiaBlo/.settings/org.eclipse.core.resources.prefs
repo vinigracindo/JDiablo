@@ -1,0 +1,9 @@
+#Mon Jun 27 01:38:16 GMT-03:00 2011
+eclipse.preferences.version=1
+encoding//src/br/ufal/lamp/diablo/core/DiabloFacade.java=UTF-8
+encoding//src/br/ufal/lamp/diablo/core/gerador/Gerador.java=UTF-8
+encoding//src/br/ufal/lamp/diablo/tests/acceptance/us1.txt=UTF-8
+encoding//src/br/ufal/lamp/diablo/tests/unit/TestArquivoCC.java=UTF-8
+encoding//src/br/ufal/lamp/diablo/ui/gui/JDiabloApplication.java=UTF-8
+encoding//src/br/ufal/lamp/diablo/utils/DefaultTextToBlock.java=UTF-8
+encoding/<project>=UTF-8
